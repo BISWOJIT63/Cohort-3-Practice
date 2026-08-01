@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  
+}
+
+.box {
+  height: 200px;
+  width: 200px;
+  background-color: brown;
+  animation: anim1 2s linear infinite;
+}
+@keyframes anim1 {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+h1 {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: aliceblue;
+  animation: typing 4s steps(18) forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 18ch;
+  }
+}
+
+.load-box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.d {
+  height: 15px;
+  width: 15px;
+  background-color: aliceblue;
+  border-radius: 50%;
+  animation: loading 0.5s linear 1s infinite alternate;
+}
+
+#d2 {
+  animation-delay: 0.2s;
+}
+
+#d3 {
+  animation-delay: 0.4s;
+}
+@keyframes loading {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-130%);
+  }
+}
+.card {
+  height: 200px;
+  width: 200px;
+  background-color: aliceblue;
+}
+.card:hover {
+  animation: flip 2s linear forwards;
+}
+@keyframes flip {
+  from {
+    transform: skew(10deg, 20deg);
+  }
+  to {
+    transform: skew(100deg, 200deg);
+  }
+}
+
+
+.solar-system {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.neptune {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.uranus {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.saturn {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.jupitor {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.mars {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.earth {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.venus {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.mercury {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.sun {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: aqua;
+}

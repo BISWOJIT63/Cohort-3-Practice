@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro </title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Login UI -->
+    <section class="login-screen">
+        <form class="login-box">
+            <h1>FinTrack Pro</h1>
+            <span>Username</span>
+            <input type="text" placeholder="Username">
+            <span>Password</span>
+            <input type="password" placeholder="Password">
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <!-- Main App -->
+
+    <div class="container">
+
+        <nav>
+
+            <div class="logo">
+                <div class="logo-icon"><i class="ri-refund-2-line ri-2x"></i></div>
+                <span class="company">FinTrack <strong>Pro</strong></span>
+            </div>
+            <div class="left-nav">
+                <div class="nav-btns">
+                    <button class="add-btn">+ Add Transaction</button>
+                </div>
+                <div class="main-profile-icon">
+                    <i class="ri-user-3-fill ri-lg"></i>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- Dashboard -->
+
+        <section class="dashboard">
+
+            <div class="cards">
+
+                <div class="card balance">
+                    <div class="card-icon balance-icon">
+                        <i class="ri-bank-line"></i>
+                    </div>
+                    <h4>Current Balance</h4>
+                    <p id="balance">₹0.00</p>
+                </div>
+
+                <div class="card income">
+                    <div class="card-icon income-icon">
+                        <i class="ri-arrow-right-up-line"></i>
+                    </div>
+                    <h4>Total Income</h4>
+                    <p id="income">₹0.00</p>
+                </div>
+
+                <div class="card expense">
+                    <div class="card-icon expense-icon">
+                        <i class="ri-arrow-right-down-line"></i>
+                    </div>
+                    <h4>Total Expense</h4>
+                    <p id="expences">₹0.00</p>
+                </div>
+
+                <div class="card transactions">
+                    <div class="card-icon transaction-icon">
+                        <i class="ri-exchange-dollar-line"></i>
+                    </div>
+                    <h4>Total Transactions</h4>
+                    <p id="transactions">0</p>
+                </div>
+
+            </div>
+
+            <!-- Chart -->
+
+            <div class="diagram">
+                <div class="chart-card">
+                    <h2>Cash Flow Analysis</h2>
+
+                    <div class="chart-container">
+                        <canvas id="cashFlowChart"></canvas>
+                    </div>
+                </div>
+                <div class="preference">
+                    <h3>Preference</h3>
+                    <div id="pref-btn">
+                        <button class="toggle"><i class="ri-moon-fill"></i></button>
+                        <hr>
+                        <div id="res">
+                            <button class="reset"><i class="ri-delete-bin-5-fill"></i></button>
+                            <div class="reset-txt">Reset All data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter -->
+
+            <div class="filters">
+
+                <button id="all-btn">All</button>
+
+                <button id="income-btn">Income</button>
+
+                <button id="expence-btn">Expense</button>
+
+            </div>
+
+            <!-- Transactions -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Description</th>
+
+                            <th>Category</th>
+
+                            <th>Date</th>
+
+                            <th>Amount</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+        <!-- Settings -->
+
+        <section class="set-sec">
+
+            <div class="settings">
+                <i class="ri-close-circle-fill ri-2x close"></i>
+
+                <h2>Profile Settings</h2>
+                <div class="setting">
+
+                    <div>
+
+                        <label>Name</label>
+
+                        <input type="text" placeholder="John Doe">
+
+                    </div>
+
+                    <div>
+
+                        <label>Currency</label>
+
+                        <select>
+
+                            <option>INR</option>
+
+                            <option>USD</option>
+
+                            <option>EUR</option>
+
+                            <option>GBP</option>
+
+                            <option>JPY</option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Add Transaction Modal -->
+
+    <div class="modal">
+
+        <form class="popup">
+
+            <h2>Add Transaction</h2>
+
+            <input type="text" placeholder="Description">
+
+            <input type="number" placeholder="Amount">
+
+            <input type="date">
+
+            <select>
+
+                <option>Income</option>
+
+                <option>Expense</option>
+
+            </select>
+
+            <select>
+
+                <option>Food</option>
+
+                <option>Shopping</option>
+
+                <option>Bills</option>
+
+                <option>Salary</option>
+
+                <option>Travel</option>
+
+            </select>
+
+            <div class="modal-buttons">
+
+                <button type="submit">Add</button>
+
+                <button type="button" class="cancel">Cancel</button>
+
+            </div>
+
+        </form>
+
+    </div>
+    <div class="profile-menu">
+        <div class="profile-header">
+            <div class="profile-avatar profile-icon"></div>
+            <div class="profile-name"></div>
+        </div>
+
+        <hr>
+
+        <div class="menu-item dashb">
+            <i class="ri-dashboard-line"></i>
+            <span>Dashboard</span>
+        </div>
+
+        <div class="menu-item set-btn">
+            <i class="ri-settings-3-line"></i>
+            <span>Settings</span>
+        </div>
+        <div class="menu-item logout-btn">
+            <i class="ri-logout-circle-r-line"></i>
+            <span>logout</span>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

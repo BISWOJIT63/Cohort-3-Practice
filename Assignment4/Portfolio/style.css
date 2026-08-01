@@ -1,0 +1,314 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+}
+.main {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color: #262626;
+  border-radius: 30px;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr) 2fr;
+
+  gap: 10px;
+
+  grid-template-areas:
+    "left-top left-top top-c1 top-c2 right-top"
+    "left-top left-top top-c1 top-c2 right-c1"
+    "left-c1 left-c2 center center right-c1"
+    "left-c1 left-c2 center center right-c2"
+    "left-bottom left-bottom left-bottom right-bottom right-bottom";
+}
+.left-top {
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: left-top;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.left-c1 {
+  background-color: rgb(78, 78, 198);
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: left-c1;
+  background-image: url("https://images.pexels.com/photos/4098353/pexels-photo-4098353.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.left-c2 {
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: left-c2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  color: white;
+  padding: 5px;
+}
+.left-bottom {
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: left-bottom;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  color: white;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 70px;
+  margin-right: 40px;
+}
+.text p {
+  opacity: 0.5;
+}
+.top-c1 {
+  background-color: rgb(11, 11, 52);
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: top-c1;
+  background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6m5lDahENIWpQALP4dAjajXnS8RJvghcgN35GAlaylLeYAQEU");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.top-c2 {
+  background-color: rgb(169, 27, 93);
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: top-c2;
+  background-image: url("https://cdn.dribbble.com/userupload/27260897/file/original-cc083964df11f1ac06bb533cc19a5f75.png?resize=2048x1536&vertical=center");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.center {
+  background-color: rgb(221, 31, 79);
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: center;
+  background-image: url("https://cdn.dribbble.com/userupload/5790923/file/original-4b77d79608ff1e123afd33927dc746e2.png?crop=0x0-3201x2401&format=webp&resize=400x300&vertical=center");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.right-top {
+  border-radius: 20px;
+  grid-area: right-top;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 5px;
+}
+.right-c1 {
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: right-c1;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  gap: 5px;
+  color: white;
+}
+.rc1-txt {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.right-c1 h3 {
+  font-size: 17px;
+  font-weight: 400;
+}
+.rc1-txt p {
+  opacity: 0.5;
+  font-size: 12px;
+}
+#i {
+  width: 15%;
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 70%;
+}
+
+#i i {
+  rotate: -36deg;
+  color: white;
+}
+.right-c2 {
+  border-radius: 20px;
+  color: white;
+  border: 3px solid black;
+  grid-area: right-c2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bg {
+  height: 40px;
+  width: 80px;
+  background-color: #363636;
+  border-radius: 40px;
+  display: flex;
+  justify-content: end;
+}
+.crcl {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.crcl i {
+  font-size: 20px;
+  rotate: 240deg;
+}
+.right-bottom {
+  border-radius: 20px;
+  border: 3px solid black;
+  grid-area: right-bottom;
+  color: white;
+}
+.rb-txt {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#rb-i {
+  width: 7%;
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80%;
+}
+
+#rb-i i {
+  rotate: -36deg;
+  color: white;
+}
+.pd {
+  display: flex;
+  gap: 10px;
+}
+.left-top {
+  font-weight: 400;
+  font-size: 12px;
+}
+.details {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+#nm {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.left-top p {
+  opacity: 0.6;
+}
+.pd img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.right-top i {
+  font-size: 30px;
+  color: white;
+}
+.l1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.l2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.i-bg {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  padding: 8px;
+  border: 3px solid black;
+  border-radius: 15px;
+}
+.left-c2 i {
+  font-size: 21px;
+  color: white;
+}
+.lc-l1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.lc-l2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.lc-i-bg {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  padding: 8px;
+  background-color: #363636;
+  border-radius: 12px;
+}
+.icn-p {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 7px;
+}
+.txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 25px;
+  gap: 15px;
+}
+.txt p {
+  opacity: 0.6;
+}

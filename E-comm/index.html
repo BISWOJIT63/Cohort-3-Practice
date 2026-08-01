@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaa Khaa Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>Jaa Khaa Store</h2>
+        <button id="create" type="button">Create Product</button>
+    </nav>
+
+    <div class="container">
+        <div class="product-grid">
+        </div>
+    </div>
+
+    <div class="overlay">
+        <div class="content">
+            <span class="close-btn">&times;</span>
+            <h3>Product Details</h3>
+            <form>
+                <input type="text" placeholder="Product Name" required>
+                <input type="url" placeholder="Image URL (e.g., https://...)" required>
+                <textarea placeholder="Product Description" rows="3" required></textarea>
+                <input type="number" placeholder="Price" step="0.01" required>
+                <button id="submit" type="submit">Save Product</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

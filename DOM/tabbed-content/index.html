@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="tabs-container">
+    <div class="tabs">
+      <button class="tab active" data-tab="home">Home</button>
+      <button class="tab" data-tab="about">About</button>
+      <button class="tab" data-tab="services">Services</button>
+      <button class="tab" data-tab="contact">Contact</button>
+    </div>
+
+    <div class="content">
+      <div class="panel active" id="home">
+        <h2>Home</h2>
+        <p>Welcome to the home section.</p>
+      </div>
+
+      <div class="panel" id="about">
+        <h2>About</h2>
+        <p>Learn more about our company.</p>
+      </div>
+
+      <div class="panel" id="services">
+        <h2>Services</h2>
+        <p>Explore the services we provide.</p>
+      </div>
+
+      <div class="panel" id="contact">
+        <h2>Contact</h2>
+        <p>Get in touch with us.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
