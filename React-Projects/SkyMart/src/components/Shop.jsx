@@ -13,7 +13,7 @@ import { MyStore } from "../Context/MyContext";
 import ProductGrid from "./ProductGrid";
 
 const Shop = ({ onProductClick, onAddToCart }) => {
-  const { products, sort, category, handleChangeCat, handleChangeSort } =
+  const { products, sort, category, handleChangeCat, handleChangeSort,setCategory,setSort } =
     useContext(MyStore);
 
   return (

@@ -32,16 +32,18 @@ const ProductDetails = ({ sort, category }) => {
   return (
     <div className="overflow-y-auto bg-gray-50">
       <div className="mx-auto max-w-7xl px-5 py-4 lg:px-8">
-        <button
-          onClick={() => {}}
-          className="group flex max-w-full items-center gap-2 text-sm font-semibold text-gray-500 transition hover:text-indigo-600"
-        >
-          <ArrowLeft
-            size={18}
-            className="shrink-0 transition group-hover:-translate-x-1"
-          />
+        <button className="group flex max-w-full items-center gap-2 text-sm font-semibold text-gray-500 transition hover:text-indigo-600">
+          <span
+            onClick={() => navigate("/shop")}
+            className="flex max-w-full items-center"
+          >
+            <ArrowLeft
+              size={18}
+              className="shrink-0 transition group-hover:-translate-x-1"
+            />
 
-          <span className="shrink-0">Products</span>
+            <span className="shrink-0">Products</span>
+          </span>
 
           <span className="text-gray-300">/</span>
 
