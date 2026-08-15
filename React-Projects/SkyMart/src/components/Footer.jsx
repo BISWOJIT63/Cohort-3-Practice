@@ -1,5 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
-
+import { Mail, MapPin, Percent, Phone } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-gray-950 text-gray-400">
@@ -9,7 +8,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 font-bold text-white">
-                S
+                <Percent />
               </div>
 
               <h2 className="text-xl font-bold text-white">
@@ -23,14 +22,6 @@ const Footer = () => {
             </p>
 
             <div className="mt-5 flex gap-3">
-              {/* Instagram */}
-              <button
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-900 text-sm font-bold text-white transition hover:bg-indigo-600"
-                title="Instagram"
-              >
-                IG
-              </button>
-
               {/* Facebook */}
               <button
                 className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-900 text-sm font-bold text-white transition hover:bg-indigo-600"

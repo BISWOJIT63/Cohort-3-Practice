@@ -1,13 +1,18 @@
-import { Search, ShoppingCart, User, Menu, X, LogOut } from "lucide-react";
+import { ShoppingCart, Menu, LogOut, Percent } from "lucide-react";
+import { useContext } from "react";
+import { NavLink } from "react-router";
+import { MyStore } from "../Context/MyContext";
 
 const Navbar = () => {
+  const { setIsOpen, onLogout, curUser,cartCount } = useContext(MyStore);
+
   return (
     <nav className="sticky top-0 z-40 border-b border-gray-100 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-xl font-bold text-white">
-            S
+            <Percent />
           </div>
 
           <div>
@@ -23,46 +28,82 @@ const Navbar = () => {
 
         {/* Navigation */}
         <div className="hidden items-center gap-8 md:flex">
-          <a href="#home" className="font-medium text-indigo-600">
+          <NavLink
+            to="/"
+            style={(e) => {
+              return {
+                color: e.isActive ? "blue" : "",
+              };
+            }}
+            className="font-medium text-gray-600  hover:text-indigo-600"
+          >
             Home
-          </a>
+          </NavLink>
 
-          <a
-            href="#shop"
-            className="font-medium text-gray-600 hover:text-indigo-600"
+          <NavLink
+            to="/shop"
+            style={(e) => {
+              return {
+                color: e.isActive ? "blue" : "",
+              };
+            }}
+            className="font-medium text-gray-600  hover:text-indigo-600"
           >
             Shop
-          </a>
+          </NavLink>
 
-          <a
-            href="#about"
+          <NavLink
+            to="/about"
+            style={(e) => {
+              return {
+                color: e.isActive ? "blue" : "",
+              };
+            }}
             className="font-medium text-gray-600 hover:text-indigo-600"
           >
             About
-          </a>
+          </NavLink>
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <button className="hidden h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 sm:flex">
-            <Search size={20} />
-          </button>
+          {/* User */}
+          {curUser && (
+            <div className="flex h-10 max-w-48 items-center gap-2 rounded-xl border border-gray-200 bg-white px-2 shadow-sm">
+              {/* First Letter */}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-400 text-sm font-semibold text-black">
+                {curUser.name?.charAt(0).toUpperCase()}
+              </div>
 
-          <button className="hidden h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 sm:flex">
-            <User size={20} />
-          </button>
+              {/* Name */}
+              <span className="truncate text-sm font-medium text-gray-700">
+                {curUser.name}
+              </span>
+            </div>
+          )}
 
-          <button className="relative flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100">
+          {/* Cart */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white hover:bg-gray-50"
+          >
             <ShoppingCart size={21} />
 
             <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1 text-xs text-white">
-              0
+              {cartCount}
             </span>
           </button>
-          <button className="hidden h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 sm:flex">
+
+          {/* Logout */}
+          <button
+            onClick={onLogout}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white hover:bg-gray-50"
+          >
             <LogOut size={20} />
           </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 md:hidden">
+
+          {/* Mobile Menu */}
+          <button className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white hover:bg-gray-50 md:hidden">
             <Menu size={22} />
           </button>
         </div>

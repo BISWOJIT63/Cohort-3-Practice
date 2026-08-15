@@ -1,24 +1,34 @@
-import { Heart, ShoppingCart, Star, SlidersHorizontal } from "lucide-react";
+import {
+  Heart,
+  ShoppingCart,
+  Star,
+  SlidersHorizontal,
+  Search,
+  X,
+  ChevronDown,
+  Check,
+} from "lucide-react";
+import { useContext, useState } from "react";
+import { MyStore } from "../Context/MyContext";
+import ProductGrid from "./ProductGrid";
 
-const Shop = ({
-  products = [],
-  selectedCategory = "All",
-  onProductClick,
-  onAddToCart,
-}) => {
+const Shop = ({ onProductClick, onAddToCart }) => {
+  const { products, sort, category, handleChangeCat, handleChangeSort } =
+    useContext(MyStore);
+
   return (
     <section className="min-h-screen bg-gray-50">
-      {/* ================= SHOP HEADER ================= */}
+      {/* ================= HEADER ================= */}
       <div className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
           <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
             SKY MART SHOP
           </p>
 
-          <div className="mt-3 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div className="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-                {selectedCategory === "All" ? "All Products" : selectedCategory}
+                Shop All Products
               </h1>
 
               <p className="mt-2 text-gray-500">
@@ -26,123 +36,126 @@ const Shop = ({
               </p>
             </div>
 
-            {/* Product Count */}
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-              <SlidersHorizontal size={17} />
-              <span>{products.length} Products</span>
-            </div>
+            <p className="text-sm text-gray-500">{products.length} Products</p>
           </div>
         </div>
       </div>
 
-      {/* ================= PRODUCTS ================= */}
-      <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
-        {products.length === 0 ? (
-          /* Empty State */
-          <div className="flex min-h-[400px] flex-col items-center justify-center rounded-3xl bg-white text-center">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
-              <ShoppingCart size={30} className="text-gray-400" />
+      {/* ================= SHOP CONTENT ================= */}
+      <div className="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+        {/* ================= FILTER BAR ================= */}
+        <div className="mb-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            {/* Search */}
+            <div className="relative w-full lg:max-w-sm">
+              <Search
+                size={18}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              />
+
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm outline-none transition focus:border-indigo-500 focus:bg-white"
+              />
             </div>
 
-            <h2 className="mt-5 text-xl font-bold text-gray-900">
-              No products found
-            </h2>
-
-            <p className="mt-2 max-w-sm text-sm text-gray-500">
-              There are no products available in this category right now.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                {/* ================= IMAGE ================= */}
-                <div
-                  onClick={() => onProductClick?.(product)}
-                  className="relative cursor-pointer overflow-hidden bg-gray-100"
+            {/* Filters */}
+            <div className="flex flex-wrap gap-3">
+              {/* Category */}
+              <div className="relative">
+                <select
+                  onChange={handleChangeCat}
+                  className="appearance-none rounded-xl border border-gray-200 bg-white py-3 pl-4 pr-10 text-sm font-medium text-gray-700 outline-none focus:border-indigo-500"
                 >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
+                  <option>All Categories</option>
+                  <option>Electronics</option>
+                  <option>Fashion</option>
+                  <option>Home</option>
+                  <option>Gaming</option>
+                </select>
 
-                  {/* Sale */}
-                  <span className="absolute left-3 top-3 rounded-lg bg-red-500 px-2.5 py-1 text-xs font-bold text-white">
-                    SALE
-                  </span>
-
-                  {/* Wishlist */}
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-md transition hover:text-red-500"
-                  >
-                    <Heart size={18} />
-                  </button>
-                </div>
-
-                {/* ================= CONTENT ================= */}
-                <div className="p-5">
-                  {/* Category */}
-                  <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                    {product.category}
-                  </p>
-
-                  {/* Name */}
-                  <h2
-                    onClick={() => onProductClick?.(product)}
-                    className="mt-1 cursor-pointer truncate text-lg font-semibold text-gray-900 hover:text-indigo-600"
-                  >
-                    {product.name}
-                  </h2>
-
-                  {/* Rating */}
-                  <div className="mt-2 flex items-center gap-1">
-                    <Star
-                      size={15}
-                      className="fill-yellow-400 text-yellow-400"
-                    />
-
-                    <span className="text-sm font-semibold">
-                      {product.rating}
-                    </span>
-
-                    <span className="text-xs text-gray-400">
-                      ({product.reviews})
-                    </span>
-                  </div>
-
-                  {/* Price */}
-                  <div className="mt-4 flex items-center gap-2">
-                    <span className="text-xl font-bold text-gray-900">
-                      ₹{product.price.toLocaleString()}
-                    </span>
-
-                    <span className="text-sm text-gray-400 line-through">
-                      ₹{product.oldPrice.toLocaleString()}
-                    </span>
-                  </div>
-
-                  {/* Add Cart */}
-                  <button
-                    onClick={() => onAddToCart?.(product)}
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-gray-950 py-3.5 text-sm font-semibold text-white transition hover:bg-indigo-600"
-                  >
-                    <ShoppingCart size={17} />
-                    Add to Cart
-                  </button>
-                </div>
+                <ChevronDown
+                  size={16}
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
               </div>
-            ))}
+
+              {/* Sort */}
+              <div className="relative">
+                <select
+                  placeholder="Sort By"
+                  onChange={handleChangeSort}
+                  className="appearance-none rounded-xl border border-gray-200 bg-white py-3 pl-4 pr-10 text-sm font-medium text-gray-700 outline-none focus:border-indigo-500"
+                >
+                  <option>Price: Low to High</option>
+                  <option>Price: High to Low</option>
+                  <option>Top Rated</option>
+                  <option>Most Popular</option>
+                </select>
+
+                <ChevronDown
+                  size={16}
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
+              </div>
+            </div>
           </div>
-        )}
+
+          {(category !== "" || sort !== "") && (
+            <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-4">
+              <div className="flex items-center gap-2 text-sm font-medium text-gray-600">
+                <SlidersHorizontal size={16} />
+                Filters:
+              </div>
+
+              {category !== "" && (
+                <button className="flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-600">
+                  {category}
+                  <div
+                    onClick={() => {
+                      setCategory("");
+                    }}
+                    className="cursor-pointer p-1 hover:bg-blue-300 rounded-full"
+                  >
+                    <X size={13} />
+                  </div>
+                </button>
+              )}
+
+              {sort !== "" && (
+                <button className="flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-600">
+                  {sort}
+                  <div
+                    onClick={() => {
+                      setSort("");
+                    }}
+                    className="cursor-pointer p-1 hover:bg-blue-300 rounded-full"
+                  >
+                    <X size={13} />
+                  </div>
+                </button>
+              )}
+
+              <button
+                onClick={() => {
+                  setCategory("");
+                  setSort("");
+                }}
+                className="ml-auto cursor-pointer  text-xs font-semibold text-red-500 hover:text-red-600"
+              >
+                Clear All
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <ProductGrid sort={sort} category={category} />
+        </div>
       </div>
     </section>
   );
 };
 
 export default Shop;
- 

@@ -1,1 +1,22 @@
 @import "tailwindcss";
+@keyframes notification {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}
